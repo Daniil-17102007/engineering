@@ -1,0 +1,35 @@
+@startuml
+entity "Restaurant" {
+  * id : UUID
+  --
+  name : str
+  cuisine : str
+  rating : float
+}
+
+entity "Dish" {
+  * id : UUID
+  --
+  name : str
+  price : Decimal
+  description : str
+}
+
+entity "CartItem" {
+  --
+  dish : Dish
+  quantity : int
+}
+
+entity "Order" {
+  * id : UUID
+  --
+  user_email : str
+  status : OrderStatus
+  created_at : datetime
+}
+
+Restaurant ||--o{ Dish : "содержит"
+CartItem }o--|| Dish : "ссылается"
+Order ||--o{ CartItem : "содержит"
+@enduml
