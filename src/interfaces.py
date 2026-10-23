@@ -2,7 +2,7 @@
 
 from typing import Protocol
 
-from .models import Order, Restaurant
+from src.models import Order, Restaurant
 
 
 class RestaurantRepository(Protocol):

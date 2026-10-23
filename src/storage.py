@@ -1,6 +1,6 @@
 """Реализация репозиториев в оперативной памяти."""
 
-from .models import Order, Restaurant
+from src.models import Order, Restaurant
 
 
 class InMemoryRestaurantRepository:
