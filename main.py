@@ -1,15 +1,18 @@
-"""Точка входа в приложение Food Delivery App.
+"""Главная точка входа в приложение FastAPI."""
 
-Запускает интерактивный CLI для работы с системой онлайн-заказа еды.
-"""
+from fastapi import FastAPI
+from src.api.order_router import router as order_router
 
-from src.cli import FoodDeliveryCLI
+app = FastAPI(
+    title="Food Delivery App API",
+    description="API для онлайн-заказа еды",
+    version="1.0.0"
+)
 
+# Подключаем роутеры (в будущем сюда добавятся роутеры напарников)
+app.include_router(order_router)
 
-def main() -> None:
-    """Запустить приложение в режиме командной строки."""
-    FoodDeliveryCLI().run()
-
-
-if __name__ == "__main__":
-    main()
+@app.get("/", tags=["Корень"])
+def read_root():
+    """Проверка, что сервер работает."""
+    return {"message": "Добро пожаловать в Food Delivery App API!"}
